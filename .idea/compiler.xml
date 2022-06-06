@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="javafxsnake" />
         <module name="cs1302-omega" />
         <module name="Snake" />
       </profile>
@@ -15,6 +16,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Snake" options="-Xlint:unchecked" />
       <module name="cs1302-omega" options="-Xlint:unchecked" />
+      <module name="javafxsnake" options="-Xlint:unchecked" />
     </option>
   </component>
 </project>

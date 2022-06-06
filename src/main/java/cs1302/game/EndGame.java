@@ -14,8 +14,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
 /**
- * An {@code HBox} containing the player's score and a {@code Button}
- * to allow the player to start a new {@code SnakeGame}.
+ * An {@code Region} displaying the player's {@code score} when they lose a {@link SnakeGame}
+ * that allows the player to start a new {@link SnakeGame}.
  */
 public class EndGame extends Region {
 
@@ -23,28 +23,27 @@ public class EndGame extends Region {
     Label score; // current score of the player
 
     /**
-     * Constructs a new {@code EndGame} HBox containing a {@code VBox}.
-     * The {@code VBox} contains a {@code Button} allowing the player to
-     * start a new {@code SnakeGame} and displays the player's score when
-     * they lost.
+     * Constructs a new {@code Region} displaying the player's score when the game
+     * ended and containing a {@code Button} allowing the player to start a new
+     * game of Snake.
      */
     public EndGame() {
-        /** format region */
+        /* format region */
         this.setMinSize(1280, 720);
         this.setBackground(new Background(new BackgroundFill(Paint.valueOf("mediumslateblue"),
                 CornerRadii.EMPTY, Insets.EMPTY)));
-        /** create and format play button */
+        /* create and format play button */
         playAgain = new Button("Play Again");
         playAgain.setFont(Font.font("Lucida Sans Unicode", FontWeight.BOLD, 100));
         playAgain.setBackground(new Background(new BackgroundFill(Paint.valueOf("azure"),
                 CornerRadii.EMPTY, Insets.EMPTY)));
         playAgain.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID,
                 CornerRadii.EMPTY, new BorderWidths(2))));
-        /** create and format score label */
+        /* create and format score label */
         score = new Label();
         score.setTextAlignment(TextAlignment.CENTER);
         score.setFont(Font.font("Lucida Sans Unicode", FontWeight.BOLD, 70));
-        /** position play button and score label within Region */
+        /* position play button and score label within Region */
         this.positionInArea(playAgain, 335, 150, 1280, 720, 0, HPos.LEFT, VPos.TOP);
         this.positionInArea(score, 500, 400, 1280, 720, 0, HPos.LEFT, VPos.TOP);
         // add play button and score label to the EndGame Region
@@ -56,13 +55,13 @@ public class EndGame extends Region {
      *
      * @param score the specified value which the score will be updated to
      */
-    public void update(int score) {
+    public void updateEndGameScore(int score) {
         this.score.setText("Score: " + score);
     } // update
 
     /**
-     * Used to reinitialize the {@code SnakeGame} when the {@code startAgain}
-     * Button is clicked by the player.
+     * The {@code playAgain} {@code Button} handler which allows {@link SnakeGame}
+     * to start a new game of Snake.
      *
      * @param run the specified lambda to be run
      */

@@ -3,17 +3,18 @@ package cs1302.omega;
 import javafx.application.Application;
 
 /**
- * Driver for the {@code OmegaApp} class.
+ * Driver for the {@code GameApp} class.
  */
-public class OmegaDriver {
+public class GameDriver {
 
     /**
      * Main entry-point into the application.
+     *
      * @param args the command-line arguments.
      */
     public static void main(String[] args) {
         try {
-            Application.launch(OmegaApp.class, args);
+            Application.launch(GameApp.class, args);
         } catch (UnsupportedOperationException e) {
             e.printStackTrace();
             System.err.println();

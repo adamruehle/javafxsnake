@@ -1,22 +1,16 @@
 package cs1302.game;
 
 import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.StrokeLineCap;
-import javafx.scene.shape.StrokeLineJoin;
-import javafx.scene.shape.StrokeType;
 
 /**
- * The {@code Board} class is a VBox containing a {@code TilePane}
- * with a number of Rectangles equal to the {@code SnakeGame}'s width x height.
- * For the {@code SnakeGame}, the {@code Board} is where the player will
- * be able to see the {@code Snake}, empty {@code Rectangle}s, and food.
+ * The {@code Board} class is a {@code VBox} containing a {@code TilePane} containing a number
+ * of Rectangles equal to the {@link SnakeGame}'s width x height. For {@link SnakeGame}, the
+ * {@code Board} is the visual display for the {@link Snake}, empty {@code Rectangle}s, and food.
  */
 public class Board extends VBox {
 
@@ -34,32 +28,32 @@ public class Board extends VBox {
 
     /**
      * Constructs a {@code Board} with a specified {@code width} and {@code height}.
-     * Each {@code Board} contains a {@code Rectangle} 2D array and a
-     * {@code playableGrid} where the {@code Snake} will be controlled by the player.
+     * Each {@code Board} contains a 2D {@code TilePane} array of {@code Rectangles}
+     * where the {@code Snake} will be controlled by the player.
      *
      * @param width the specified width of the {@code Board}
      * @param height the specified height of the {@code Board}
      */
     public Board(int width, int height) {
-        // grid to display each Rectangle
+        /* create TilePane grid to display each Rectangle */
         TilePane playableGrid = new TilePane(Orientation.VERTICAL);
         playableGrid.setPrefRows(height);
         this.setBackground(Background.EMPTY);
         // initialize the board of Rectangles
         board = new Rectangle[width][height];
-        // places each Rectangle in the board and playableGrid
+        /* correctly places each Rectangle on the board and playableGrid */
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 board[x][y] = new Rectangle(24, 24);
                 playableGrid.getChildren().add(board[x][y]);
             } // for
         } // for
-        this.getChildren().add(playableGrid); // add the playableGrid in the VBox
+        this.getChildren().add(playableGrid); // add the playableGrid to this VBox
     } // Constructor
 
     /**
-     * Sets the CellType of the Rectangle located at the specified
-     * x and y values.
+     * Sets the {@code CellType} of the {@code Rectangle} located at the specified
+     * {@code x} and {@code y} values.
      *
      * @param x the specified x value
      * @param y the specified y value

@@ -11,7 +11,7 @@ public class Position {
     private final int y;
 
     /**
-     * Constructs a {@code Position} with an associate x and y value.
+     * Constructs a {@code Position} containing an x and y value.
      *
      * @param x the specified x value
      * @param y the specified y value
@@ -26,25 +26,21 @@ public class Position {
      *
      * @return the x value of this {@code Position}
      */
-    public int getX() {
-        return x;
-    } // getX
+    public int getX() { return x; } // getX
 
     /**
      * Returns the y value of this {@code Position}.
      *
      * @return the y value of this {@code Position}
      */
-    public int getY() {
-        return y;
-    } // getY
+    public int getY() { return y; } // getY
 
     /**
      * Returns true if the {@code x} and {@code y} values of
      * the {@code other} {@code Position} equals that of this
      * {@code Position}.
      *
-     * @param other the spcified {@code Position} to be compared
+     * @param other the speified {@code Position} to be compared
      * @return true if this x and y values equal the x and y values
      *         of the {@code other} {@code Position}; false otherwise
      */

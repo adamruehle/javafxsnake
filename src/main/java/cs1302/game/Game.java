@@ -1,17 +1,10 @@
 package cs1302.game;
 
 import java.util.BitSet;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.Event;
-import javafx.geometry.Bounds;
-import javafx.geometry.BoundingBox;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.util.Duration;
 
@@ -32,7 +25,6 @@ public abstract class Game extends Region {
 
     protected final Logger logger = Logger.getLogger("cs1302.game.Game");
 
-    private final Bounds bounds;                     // game bounds
     private final Duration fpsTarget;                // target duration for game loop
     private final Timeline loop = new Timeline();    // timeline for main game loop
     private final BitSet keysPressed = new BitSet(); // set of currently pressed keys
@@ -49,7 +41,6 @@ public abstract class Game extends Region {
         super();
         setMinWidth(width);
         setMinHeight(height);
-        this.bounds = new BoundingBox(0, 0, width, height);
         this.fpsTarget = Duration.millis(1000.0 / fps);
         addEventFilter(KeyEvent.KEY_PRESSED, event -> handleKeyPressed(event));
         addEventFilter(KeyEvent.KEY_RELEASED, event -> handleKeyReleased(event));
@@ -100,31 +91,6 @@ public abstract class Game extends Region {
     } // handleKeyReleased
 
     /**
-     * Return whether or not a key is currently pressed.
-     * @param key the key code to check
-     * @return {@code true} if the key is pressed; otherwise {@code false}
-     */
-    protected final boolean isKeyPressed(KeyCode key) {
-        return keysPressed.get(key.getCode());
-    } // isKeyPressed
-
-    /**
-     * Return whether or not a key is currently pressed. If the key is pressed, then
-     * {@code handler.run()} is run on the calling thread before the method returns.
-     * @param key the key code to check
-     * @param handler the object whose {@code run} method is invoked
-     * @return {@code true} if the key is pressed; otherwise {@code false}
-     */
-    protected final boolean isKeyPressed(KeyCode key, Runnable handler) {
-        if (isKeyPressed(key)) {
-            handler.run();
-            return true;
-        } else {
-            return false;
-        } // if
-    } // isKeyPressed
-
-    /**
      * Setup and start the main game loop.
      */
     public final void play() {
@@ -148,21 +114,5 @@ public abstract class Game extends Region {
     public final void pause() {
         loop.pause();
     } // pause
-
-    /**
-     * Set the log level specifying which message levels will be logged by the game's logger.
-     * @param level level to set
-     */
-    public final void setLogLevel(Level level) {
-        logger.setLevel(level);
-    } // setLogLevel
-
-    /**
-     * Get the bounds for this game that were specified when it was constructed.
-     * @return bounds for this game
-     */
-    public final Bounds getGameBounds() {
-        return bounds;
-    } // getGameBounds
 
 } // Game
